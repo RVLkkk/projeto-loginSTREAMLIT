@@ -1,0 +1,14 @@
+    [
+        {
+        "id": 1,
+        "nome": "ygor",
+        "email": "rvl@liso.com",
+        "senha": "abc123"
+    },
+    {
+        "id": 2,
+        "nome": "pedro",
+        "email": "liso@liso.com",
+        "senha": "abc123"
+    }
+    ]
