@@ -1,6 +1,10 @@
 import streamlit as st
 import time
 from controllers.load_usuarios import load_usuarios
+from components.cadastro import cadastrar_aluno
+from components.show_alunos import show_alunos
+
+st.set_page_config("Sistema de Cadastro", layout="wide")
 
 st.title("Projeto Streamlit")
 
@@ -35,15 +39,7 @@ def logout():
     time.sleep(3)
     st.rerun()
 
-@st.dialog("Formulário de Cadastro de Alunos")
-def cadastrar_aluno():
-  nome_aluno = st.text_input("Nome do Aluno", placeholder="Nome do Aluno")
-  email_aluno = st.text_input("Email do Aluno", placeholder="Email do Aluno")
-  cpf_aluno = st.text_input("CPF do Aluno", placeholder="CPF do Aluno")
-  dataNasc_aluno = st.date_input("Data de Nascimento do Aluno")
-  telefone_aluno = st.text_input("Telefone do Aluno", placeholder="Telefone do Aluno")
 
-  btn_cadastrar = st.button("Cadastrar")
 
 def main_page():
   tabs = st.tabs(["Dashboard", "Cadastro", "Logout"])
@@ -57,6 +53,8 @@ def main_page():
     st.subheader("Cadastro")
     if st.button("Abrir Formulário de Cadastro"):
       cadastrar_aluno()
+    
+    show_alunos()
 
   with tabs[2]:
     st.subheader("Logout")
@@ -66,33 +64,3 @@ if st.session_state.email:
   main_page()
 else:
   login()
-
-
-
-# if st.session_state.email:
-#   tabs = st.tabs(["Dashboard", "Cadastro", "Logout"])
-
-#   with tabs[0]:
-#     nome = st.session_state.nome
-#     st.subheader("Dashboard")
-#     st.write(nome)
-
-#   with tabs[1]:
-#     st.subheader("Cadastro")
-
-#   with tabs[2]:
-#     st.subheader("Logout")
-# else:
-# login()
-
-# if "contador" not in st.session_state:
-#   st.session_state.contador = 0
-
-# if st.button("Adicionar"):
-#   st.session_state.contador += 1
-
-# if st.button("Diminuir"):
-#   if st.session_state.contador > 0:
-#     st.session_state.contador -= 1
-
-st.write(st.session_state)
